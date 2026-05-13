@@ -1,0 +1,75 @@
+[
+  {
+    "id": 1,
+    "title": "Oak Bay Waterfront Estate",
+    "type": "Waterfront Estate",
+    "price": 14500000,
+    "location": "Oak Bay, Victoria, BC",
+    "beds": 6,
+    "baths": 8,
+    "sqft": 8500,
+    "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200",
+    "description": "A rare gem on the shores of Oak Bay. This heritage-inspired estate combines classic Victoria charm with modern luxury. Features absolute ocean frontage and private dock access.",
+    "featured": true,
+    "images": [
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=1200"
+    ],
+    "amenities": ["Ocean Front", "Private Dock", "Guest Cottage", "Wine Cellar", "Infinity Pool"]
+  },
+  {
+    "id": 2,
+    "title": "The Uplands Modernist",
+    "type": "Modern Estate",
+    "price": 6850000,
+    "location": "Uplands, Victoria, BC",
+    "beds": 4,
+    "baths": 5,
+    "sqft": 5200,
+    "image": "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=1200",
+    "description": "Architecturally significant home in the prestigious Uplands neighborhood. Minimalist design meets natural elements in this award-winning luxury residence.",
+    "featured": true,
+    "images": [
+      "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&q=80&w=1200"
+    ],
+    "amenities": ["Smart Home", "Heated Floors", "Art Gallery", "Drought-Tolerant Landscaping"]
+  },
+  {
+    "id": 3,
+    "title": "Inner Harbour Sky-Residence",
+    "type": "Luxury Penthouse",
+    "price": 3200000,
+    "location": "Downtown, Victoria, BC",
+    "beds": 3,
+    "baths": 3,
+    "sqft": 2800,
+    "image": "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&q=80&w=1200",
+    "description": "Breathtaking views of the Empress Hotel and BC Parliament Buildings. This penthouse defines downtown luxury living in the heart of Victoria's vibrant Inner Harbour.",
+    "featured": false,
+    "images": [
+      "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&q=80&w=1200"
+    ],
+    "amenities": ["City View", "Concierge", "Fitness Center", "Private Rooftop Deck"]
+  },
+
+    {
+    "id": 4,
+    "title": "Inner Harbour Residence",
+    "type": "Luxury Penthouse",
+    "price": 900000,
+    "location": "Downtown, Victoria, BC",
+    "beds": 3,
+    "baths": 3,
+    "sqft": 2600,
+    "image": "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&q=80&w=1200",
+    "description": "Breathtaking views of the Empress Hotel and BC Parliament Buildings. This penthouse defines downtown luxury living in the heart of Victoria's vibrant Inner Harbour.",
+    "featured": false,
+    "images": [
+      "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&q=80&w=1200"
+    ],
+    "amenities": ["City View", "Concierge", "Fitness Center", "Private Rooftop Deck"]
+  }
+]

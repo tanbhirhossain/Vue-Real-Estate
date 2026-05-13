@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-bg-app: var(--bg-app);
+  --color-text-app: var(--text-app);
+}
+
+:root {
+  --primary: #D4AF37;
+  --primary-hover: #B8960C;
+  --bg-app: #FFFFFF;
+  --text-app: #0F172A;
+}
+
+.dark {
+  --bg-app: #050505;
+  --text-app: #F5F5F5;
+}
+
+/* Theme color overrides */
+.theme-emerald {
+  --primary: #10B981;
+  --primary-hover: #059669;
+}
+
+.theme-royal {
+  --primary: #3B82F6;
+  --primary-hover: #2563EB;
+}
+
+.theme-gold {
+  --primary: #D4AF37;
+  --primary-hover: #B8960C;
+}
+
+@layer base {
+  body {
+    @apply antialiased transition-colors duration-300;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-text-app/5 backdrop-blur-2xl border border-text-app/10;
+  }
+  .glass-dark {
+    @apply bg-bg-app/40 backdrop-blur-md border border-text-app/10;
+  }
+  .text-shadow-premium {
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  }
+  .tracking-ultra {
+    letter-spacing: 0.5em;
+  }
+}
+
+/* Luxury Card Hover Refinement */
+.luxury-card {
+  @apply transition-all duration-500 ease-in-out border border-text-app/10 bg-text-app/5 backdrop-blur-xl;
+}
+.luxury-card:hover {
+  @apply -translate-y-2 border-primary/30 shadow-[0_20px_50px_rgba(0,0,0,0.5)];
+  transform: translateY(-8px) rotate(1deg);
+}
