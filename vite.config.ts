@@ -7,7 +7,9 @@ export default defineConfig(({mode}) => {
   const env = loadEnv(mode, '.', '');
   return {
     // CRITICAL: This formats production asset prefixes correctly
-    base: process.env.NODE_ENV === 'production' ? '/Vue-Real-Estate/' : '/',
+    // base: process.env.NODE_ENV === 'production' ? '/Vue-Real-Estate/' : '/',
+    // আপনার রিপোজিটরির নাম যদি vue-real-estate হয়
+    base: mode === 'production' ? '/vue-real-estate/' : '/',
     plugins: [vue(), tailwindcss()],
     define: {
       'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),

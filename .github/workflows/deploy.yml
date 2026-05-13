@@ -1,0 +1,23 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main] # আপনার মেইন ব্রাঞ্চের নাম দিন
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install and Build
+        run: |
+          npm install
+          npm run build
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist # আপনার বিল্ড ফোল্ডার
+          branch: gh-pages # এই ব্রাঞ্চে অটোমেটিক ডেপ্লয় হবে
