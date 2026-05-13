@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import company from '../data/company.json'
+import { useActiveCompany } from '../composables/useCompanyContext'
+
+const { activeCompany } = useActiveCompany()
 
 const milestones = [
   { year: '1998', title: 'The Genesis', desc: 'Julian Sterling founded the agency with a single vision: absolute excellence.' },
@@ -17,13 +19,13 @@ const milestones = [
         <div class="text-primary font-bold text-sm uppercase tracking-[0.3em] mb-4">Our Heritage</div>
         <h1 class="text-5xl md:text-7xl font-display font-black dark:text-white leading-tight mb-8">Crafting Legacies <br /> Since 1998</h1>
         <p class="text-xl text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
-          The story of {{ company.name }} is one of relentless pursuit. We didn't want to be the biggest; we wanted to be the most specialized. 
+          The story of {{ activeCompany.name }} is one of relentless pursuit. We didn't want to be the biggest; we wanted to be the most specialized. 
         </p>
         <p class="text-lg text-slate-500 dark:text-slate-500 leading-relaxed mb-10">
           Over two decades, we have evolved from a boutique Manhattan agency to a global lifestyle brand. Today, we represent not just homes, but the pinnacle of human achievement in architecture and design.
         </p>
         <div class="grid grid-cols-2 gap-8">
-          <div v-for="(val, label) in company.stats" :key="label">
+          <div v-for="(val, label) in activeCompany.stats" :key="label">
             <div class="text-3xl font-display font-bold text-primary">{{ val }}</div>
             <div class="text-[10px] uppercase font-bold text-slate-400 tracking-widest">{{ label.replace(/([A-Z])/g, ' $1') }}</div>
           </div>

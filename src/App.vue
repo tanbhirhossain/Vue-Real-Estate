@@ -5,8 +5,10 @@ import Navbar from './components/Navbar.vue'
 import Footer from './components/Footer.vue'
 import ThemeSwitcher from './components/ThemeSwitcher.vue'
 import { useThemeStore } from './stores/theme'
+import { useActiveCompany } from './composables/useCompanyContext'
 
 const themeStore = useThemeStore()
+const { activeCompany } = useActiveCompany()
 const scrollProgress = ref(0)
 const isLoading = ref(true)
 
@@ -48,8 +50,8 @@ onMounted(() => {
     <transition name="fade">
       <div v-if="isLoading" class="fixed inset-0 z-[200] bg-[#050505] flex flex-col items-center justify-center">
         <div class="flex flex-col items-center mb-8 text-center">
-           <span class="text-5xl font-serif italic tracking-tighter text-primary animate-pulse">Victoria</span>
-           <span class="text-[12px] tracking-[0.5em] uppercase opacity-40 mt-2 text-white">Real Estate Canada</span>
+           <span class="text-5xl font-serif italic tracking-tighter text-primary animate-pulse">{{ activeCompany.name.split(' ')[0] }}</span>
+           <span class="text-[12px] tracking-[0.5em] uppercase opacity-40 mt-2 text-white">{{ activeCompany.name.split(' ').slice(1).join(' ') }}</span>
         </div>
         <div class="w-48 h-[1px] bg-white/10 rounded-full overflow-hidden">
           <div class="h-full bg-primary animate-[loading_1.5s_ease-in-out_infinite]"></div>

@@ -1,34 +1,72 @@
-{
-  "name": "Victoria Real Estate Canada",
-  "tagline": "The Pinnacle of West Coast Living",
-  "description": "Established in Victoria, BC, Victoria Real Estate Canada has redefined the benchmark for luxury real estate on the Island. Our portfolio features the most exclusive properties in Oak Bay, Uplands, and beyond. We provide a bespoke service for a global clientele seeking the unique lifestyle of British Columbia's capital.",
-  "address": "1510 Cook St #103, Victoria, BC V8W 3X8, Canada",
-  "phone": "+1 (250) 388-5811",
-  "email": "info@victoriarealestatecanada.com",
-  "hours": {
-    "Monday": "9:00 AM - 8:00 PM",
-    "Tuesday": "9:00 AM - 8:00 PM",
-    "Wednesday": "9:00 AM - 8:00 PM",
-    "Thursday": "9:00 AM - 8:00 PM",
-    "Friday": "9:00 AM - 9:00 PM",
-    "Saturday": "10:00 AM - 6:00 PM",
-    "Sunday": "11:00 AM - 4:00 PM"
+[
+  {
+    "name": "Victoria Real Estate Canada",
+    "slug": "victoria-real-estate-canada",
+    "tagline": "The Pinnacle of West Coast Living",
+    "description": "Established in Victoria, BC, Victoria Real Estate Canada has redefined the benchmark for luxury real estate on the Island. Our portfolio features the most exclusive properties in Oak Bay, Uplands, and beyond. We provide a bespoke service for a global clientele seeking the unique lifestyle of British Columbia's capital.",
+    "address": "1510 Cook St #103, Victoria, BC V8W 3X8, Canada",
+    "phone": "+1 (250) 388-5811",
+    "email": "info@victoriarealestatecanada.com",
+    "hours": {
+      "Monday": "9:00 AM - 8:00 PM",
+      "Tuesday": "9:00 AM - 8:00 PM",
+      "Wednesday": "9:00 AM - 8:00 PM",
+      "Thursday": "9:00 AM - 8:00 PM",
+      "Friday": "9:00 AM - 9:00 PM",
+      "Saturday": "10:00 AM - 6:00 PM",
+      "Sunday": "11:00 AM - 4:00 PM"
+    },
+    "socials": {
+      "instagram": "https://instagram.com/victoriarealestate",
+      "facebook": "https://facebook.com/victoriarealestate",
+      "linkedin": "https://linkedin.com/company/victoria-real-estate-canada",
+      "twitter": "https://twitter.com/vicrealestate"
+    },
+    "stats": {
+      "propertiesSold": "2,400+",
+      "yearsExperience": "25",
+      "awardsWon": "42",
+      "clientSatisfaction": "99.8%"
+    },
+    "awards": [
+      "World's Best Real Estate Agency 2023",
+      "Luxury Portfolio International Award 2022",
+      "Excellence in Client Service 2024"
+    ]
   },
-  "socials": {
-    "instagram": "https://instagram.com/eclatluxury",
-    "facebook": "https://facebook.com/eclatestates",
-    "linkedin": "https://linkedin.com/company/eclat-estates",
-    "twitter": "https://twitter.com/eclatluxury"
-  },
-  "stats": {
-    "propertiesSold": "2,400+",
-    "yearsExperience": "25",
-    "awardsWon": "42",
-    "clientSatisfaction": "99.8%"
-  },
-  "awards": [
-    "World's Best Real Estate Agency 2023",
-    "Luxury Portfolio International Award 2022",
-    "Excellence in Client Service 2024"
-  ]
-}
+  {
+    "name": "Toronto Home Realty Inc.",
+    "slug": "toronto-home-realty-inc",
+    "tagline": "Your Gateway to GTA Excellence",
+    "description": "Toronto Home Realty Inc. is a premier brokerage specializing in the diverse neighborhoods of the Greater Toronto Area. From high-rise luxury condos in the Entertainment District to historic estates in Rosedale, we offer unparalleled market expertise and dedicated service for buyers and sellers in Canada's largest metropolis.",
+    "address": "35 Hayden St #102, Toronto, ON M4Y 3C3, Canada",
+    "phone": "+1 (416) 655-6681",
+    "email": "info@torontohomerealty.com",
+    "hours": {
+      "Monday": "9:00 AM - 8:00 PM",
+      "Tuesday": "9:00 AM - 8:00 PM",
+      "Wednesday": "9:00 AM - 8:00 PM",
+      "Thursday": "9:00 AM - 8:00 PM",
+      "Friday": "9:00 AM - 9:00 PM",
+      "Saturday": "10:00 AM - 6:00 PM",
+      "Sunday": "11:00 AM - 4:00 PM"
+    },
+    "socials": {
+      "instagram": "https://instagram.com/torontohomerealty",
+      "facebook": "https://facebook.com/torontohomerealty",
+      "linkedin": "https://linkedin.com/company/toronto-home-realty-inc",
+      "twitter": "https://twitter.com/torontorealty"
+    },
+    "stats": {
+      "propertiesSold": "1,850+",
+      "yearsExperience": "15",
+      "awardsWon": "28",
+      "clientSatisfaction": "99.5%"
+    },
+    "awards": [
+      "Top GTA Brokerage 2023",
+      "Ontario Real Estate Excellence Award 2022",
+      "Consumer Choice Award 2024"
+    ]
+  }
+]

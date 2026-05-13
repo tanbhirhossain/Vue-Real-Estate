@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
+import { useActiveCompany } from '../composables/useCompanyContext'
 
 interface Property {
   id: number
@@ -17,6 +18,8 @@ interface Property {
 defineProps<{
   property: Property
 }>()
+
+const { withCompanySlug } = useActiveCompany()
 
 const formatPrice = (price: number) => {
   return new Intl.NumberFormat('en-US', {
@@ -86,7 +89,7 @@ const formatPrice = (price: number) => {
            <span class="text-[9px] uppercase tracking-widest text-text-app/60 font-bold">In-Market</span>
         </div>
         <RouterLink 
-          :to="'/properties/' + property.id"
+          :to="withCompanySlug('/properties/' + property.id)"
           class="text-text-app text-[10px] uppercase tracking-[0.2em] font-bold hover:text-primary transition-colors flex items-center gap-2 group/btn"
         >
           View Assets

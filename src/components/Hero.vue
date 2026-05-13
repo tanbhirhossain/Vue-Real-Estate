@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { useActiveCompany } from '../composables/useCompanyContext'
 
 const router = useRouter()
+const { withCompanySlug } = useActiveCompany()
 const searchQuery = ref('')
 const selectedType = ref('All Types')
 
@@ -10,7 +12,7 @@ const propertyTypes = ['All Types', 'Penthouse', 'Modern Villa', 'Estate', 'Mans
 
 const handleSearch = () => {
   router.push({ 
-    path: '/properties', 
+    path: withCompanySlug('/properties'),
     query: { q: searchQuery.value, type: selectedType.value === 'All Types' ? undefined : selectedType.value }
   })
 }
@@ -62,9 +64,9 @@ const handleSearch = () => {
         </div>
 
         <div class="flex gap-8 text-[10px] tracking-[0.3em] uppercase items-center text-white/60">
-          <RouterLink to="/properties" class="hover:text-primary transition-colors border-b border-transparent hover:border-primary pb-1">View Portfolio</RouterLink>
+          <RouterLink :to="withCompanySlug('/properties')" class="hover:text-primary transition-colors border-b border-transparent hover:border-primary pb-1">View Portfolio</RouterLink>
           <div class="w-1 h-1 bg-white/20 rounded-full"></div>
-          <RouterLink to="/about" class="hover:text-primary transition-colors border-b border-transparent hover:border-primary pb-1">Our Heritage</RouterLink>
+          <RouterLink :to="withCompanySlug('/about')" class="hover:text-primary transition-colors border-b border-transparent hover:border-primary pb-1">Our Heritage</RouterLink>
         </div>
       </div>
 

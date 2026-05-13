@@ -12,7 +12,7 @@ const mainImage = ref('')
 
 onMounted(() => {
   if (!property.value) {
-    router.push('/404')
+    router.push({ name: 'not-found', params: { pathMatch: ['properties', String(propertyId)] } })
     return
   }
   mainImage.value = property.value.image

@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
 import Hero from '../components/Hero.vue'
 import PropertyCard from '../components/PropertyCard.vue'
 import properties from '../data/properties.json'
-import company from '../data/company.json'
-import agents from '../data/agents.json'
+import { useActiveCompany } from '../composables/useCompanyContext'
 import reviews from '../data/reviews.json'
 
+const { activeCompany, withCompanySlug } = useActiveCompany()
 const featuredProperties = properties.filter(p => p.featured)
 const stats = [
   { value: '25+', label: 'Years of Legacy', icon: 'award' },
@@ -67,7 +66,7 @@ const stats = [
           <div data-aos="fade-right" class="text-primary font-bold text-sm uppercase tracking-[0.3em] mb-4">Curated Collection</div>
           <h2 data-aos="fade-right" data-aos-delay="100" class="text-4xl md:text-5xl font-serif font-bold text-text-app italic leading-tight">Featured Masterpieces</h2>
         </div>
-        <RouterLink data-aos="fade-left" to="/properties" class="group flex items-center gap-3 text-lg font-bold text-text-app hover:text-primary transition-colors">
+        <RouterLink data-aos="fade-left" :to="withCompanySlug('/properties')" class="group flex items-center gap-3 text-lg font-bold text-text-app hover:text-primary transition-colors">
           View All Listings
           <div class="w-12 h-12 rounded-full border border-text-app/10 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
@@ -158,10 +157,10 @@ const stats = [
             Schedule a private consultation with our principal founders and gain early access to off-market luxury assets.
           </p>
           <div class="flex flex-col sm:flex-row justify-center gap-6">
-            <RouterLink to="/contact" class="bg-primary hover:bg-primary-hover text-white px-12 py-5 rounded-2xl font-bold text-lg transition-all hover:scale-105 active:scale-95 shadow-2xl shadow-primary/30">
+            <RouterLink :to="withCompanySlug('/contact')" class="bg-primary hover:bg-primary-hover text-white px-12 py-5 rounded-2xl font-bold text-lg transition-all hover:scale-105 active:scale-95 shadow-2xl shadow-primary/30">
               Book a Private Tour
             </RouterLink>
-            <a :href="'tel:' + company.phone" class="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/20 px-12 py-5 rounded-2xl font-bold text-lg transition-all">
+            <a :href="'tel:' + activeCompany.phone" class="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/20 px-12 py-5 rounded-2xl font-bold text-lg transition-all">
               Call Direct Line
             </a>
           </div>

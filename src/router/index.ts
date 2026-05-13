@@ -1,53 +1,76 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { defaultCompany, getCompanyBySlug } from '../composables/useCompanyContext'
 import HomeView from '../pages/Home.vue'
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: HomeView
+      redirect: `/${defaultCompany.slug}`
     },
     {
-      path: '/properties',
-      name: 'properties',
-      component: () => import('../pages/Properties.vue')
-    },
-    {
-      path: '/properties/:id',
-      name: 'property-details',
-      component: () => import('../pages/PropertyDetails.vue')
-    },
-    {
-      path: '/about',
-      name: 'about',
-      component: () => import('../pages/About.vue')
-    },
-    {
-      path: '/agents',
-      name: 'agents',
-      component: () => import('../pages/Agents.vue')
-    },
-    {
-      path: '/reviews',
-      name: 'reviews',
-      component: () => import('../pages/Reviews.vue')
-    },
-    {
-      path: '/contact',
-      name: 'contact',
-      component: () => import('../pages/Contact.vue')
-    },
-    {
-      path: '/blog',
-      name: 'blog',
-      component: () => import('../pages/Blog.vue')
-    },
-    {
-      path: '/faq',
-      name: 'faq',
-      component: () => import('../pages/FAQ.vue')
+      path: '/:companySlug',
+      beforeEnter: (to) => {
+        const companySlug = to.params.companySlug as string | undefined
+        if (!getCompanyBySlug(companySlug)) {
+          return {
+            name: 'not-found',
+            params: {
+              pathMatch: to.path.slice(1).split('/')
+            }
+          }
+        }
+
+        return true
+      },
+      children: [
+        {
+          path: '',
+          name: 'home',
+          component: HomeView
+        },
+        {
+          path: 'properties',
+          name: 'properties',
+          component: () => import('../pages/Properties.vue')
+        },
+        {
+          path: 'properties/:id',
+          name: 'property-details',
+          component: () => import('../pages/PropertyDetails.vue')
+        },
+        {
+          path: 'about',
+          name: 'about',
+          component: () => import('../pages/About.vue')
+        },
+        {
+          path: 'agents',
+          name: 'agents',
+          component: () => import('../pages/Agents.vue')
+        },
+        {
+          path: 'reviews',
+          name: 'reviews',
+          component: () => import('../pages/Reviews.vue')
+        },
+        {
+          path: 'contact',
+          name: 'contact',
+          component: () => import('../pages/Contact.vue')
+        },
+        {
+          path: 'blog',
+          name: 'blog',
+          component: () => import('../pages/Blog.vue')
+        },
+        {
+          path: 'faq',
+          name: 'faq',
+          component: () => import('../pages/FAQ.vue')
+        }
+      ]
     },
     {
       path: '/:pathMatch(.*)*',

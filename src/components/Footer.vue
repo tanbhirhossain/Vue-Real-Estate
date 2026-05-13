@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import company from '../data/company.json'
+import { computed } from 'vue'
+import { useActiveCompany } from '../composables/useCompanyContext'
 
 const currentYear = new Date().getFullYear()
+const { activeCompany, withCompanySlug } = useActiveCompany()
 
 const footerLinks = [
   {
@@ -30,11 +32,11 @@ const stats = [
   { label: 'Cities', value: '24', suffix: '', separator: false }
 ]
 
-const socials = [
-  { name: 'FB', icon: 'FB' },
-  { name: 'IG', icon: 'IG' },
-  { name: 'LN', icon: 'LN' }
-]
+const socials = computed(() => [
+  { name: 'facebook', icon: 'FB' },
+  { name: 'instagram', icon: 'IG' },
+  { name: 'linkedin', icon: 'LN' }
+])
 </script>
 
 <template>
@@ -49,15 +51,15 @@ const socials = [
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-24">
         <!-- Brand Info -->
         <div class="space-y-10">
-          <RouterLink to="/" class="flex flex-col group">
-             <span class="text-3xl font-serif italic tracking-tighter leading-none text-primary group-hover:scale-105 transition-transform">Victoria</span>
-             <span class="text-[10px] tracking-[0.4em] uppercase opacity-60 mt-1 text-text-app">Real Estate Canada</span>
+          <RouterLink :to="withCompanySlug('/')" class="flex flex-col group">
+             <span class="text-3xl font-serif italic tracking-tighter leading-none text-primary group-hover:scale-105 transition-transform">{{ activeCompany.name.split(' ')[0] }}</span>
+             <span class="text-[10px] tracking-[0.4em] uppercase opacity-60 mt-1 text-text-app">{{ activeCompany.name.split(' ').slice(1).join(' ') }}</span>
           </RouterLink>
           <p class="text-text-app/40 leading-relaxed text-sm max-w-xs">
             Defining the next generation of West Coast living through architectural mastery and exclusive asset management in Victoria.
           </p>
           <div class="flex space-x-4">
-            <a v-for="social in socials" :key="social.name" href="#" class="w-10 h-10 border border-text-app/10 rounded-full flex items-center justify-center text-text-app/60 hover:text-primary hover:border-primary transition-all">
+            <a v-for="social in socials" :key="social.name" :href="activeCompany.socials[social.name]" target="_blank" rel="noopener noreferrer" class="w-10 h-10 border border-text-app/10 rounded-full flex items-center justify-center text-text-app/60 hover:text-primary hover:border-primary transition-all">
               <span class="text-[10px] font-bold">{{ social.icon }}</span>
             </a>
           </div>
@@ -68,7 +70,7 @@ const socials = [
           <h4 class="text-text-app text-[11px] uppercase tracking-[0.3em] font-bold mb-10">{{ section.title }}</h4>
           <ul class="space-y-5">
             <li v-for="link in section.links" :key="link.name">
-              <RouterLink :to="link.path" class="text-text-app/40 hover:text-text-app transition-colors text-sm font-medium">{{ link.name }}</RouterLink>
+              <RouterLink :to="withCompanySlug(link.path)" class="text-text-app/40 hover:text-text-app transition-colors text-sm font-medium">{{ link.name }}</RouterLink>
             </li>
           </ul>
         </div>
@@ -103,7 +105,7 @@ const socials = [
         </div>
         
         <div class="text-[9px] tracking-[0.3em] uppercase text-text-app/30 flex items-center space-x-6">
-          <span>&copy; {{ currentYear }} {{ company.name }}</span>
+          <span>&copy; {{ currentYear }} {{ activeCompany.name }}</span>
           <span class="w-1 h-1 bg-text-app/10 rounded-full"></span>
           <a href="#" class="hover:text-text-app transition-colors">Privacy</a>
           <span class="w-1 h-1 bg-text-app/10 rounded-full"></span>

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import company from '../data/company.json'
+import { useActiveCompany } from '../composables/useCompanyContext'
+
+const { activeCompany } = useActiveCompany()
 
 const isSubmitted = ref(false)
 const formData = ref({
@@ -65,7 +67,7 @@ const handleSubmit = () => {
               </div>
               <div>
                 <div class="text-xs font-bold uppercase text-slate-400 tracking-widest mb-1">Email us</div>
-                <div class="text-xl font-bold dark:text-white underline">{{ company.email }}</div>
+                <div class="text-xl font-bold dark:text-white underline">{{ activeCompany.email }}</div>
               </div>
             </div>
 
@@ -75,7 +77,7 @@ const handleSubmit = () => {
               </div>
               <div>
                 <div class="text-xs font-bold uppercase text-slate-400 tracking-widest mb-1">Call direct</div>
-                <div class="text-xl font-bold dark:text-white underline">{{ company.phone }}</div>
+                <div class="text-xl font-bold dark:text-white underline">{{ activeCompany.phone }}</div>
               </div>
             </div>
 
@@ -85,7 +87,7 @@ const handleSubmit = () => {
               </div>
               <div>
                 <div class="text-xs font-bold uppercase text-slate-400 tracking-widest mb-1">HQ Address</div>
-                <div class="text-lg font-medium dark:text-blue-100">{{ company.address }}</div>
+                <div class="text-lg font-medium dark:text-blue-100">{{ activeCompany.address }}</div>
               </div>
             </div>
           </div>

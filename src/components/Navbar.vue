@@ -2,14 +2,16 @@
 import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { useThemeStore } from '../stores/theme'
+import { useActiveCompany } from '../composables/useCompanyContext'
 
 const themeStore = useThemeStore()
 const route = useRoute()
+const { activeCompany, withCompanySlug } = useActiveCompany()
 const isScrolled = ref(false)
 const isMobileMenuOpen = ref(false)
 const currentTime = ref('')
 
-const isHomePage = computed(() => route.path === '/')
+const isHomePage = computed(() => route.name === 'home')
 
 const navLinks = [
   { name: 'Portfolio', path: '/properties' },
@@ -51,13 +53,13 @@ onUnmounted(() => {
     :class="[isScrolled ? 'h-16 bg-bg-app/80 backdrop-blur-md px-6 border-b border-text-app/10' : 'h-24 bg-black/10 backdrop-blur-[2px] px-10']"
   >
     <div class="max-w-7xl mx-auto h-full flex items-center justify-between">
-      <RouterLink to="/" class="flex flex-col group">
-        <span class="text-2xl font-serif italic tracking-tighter leading-none text-primary group-hover:scale-105 transition-transform">Victoria</span>
+      <RouterLink :to="withCompanySlug('/')" class="flex flex-col group">
+        <span class="text-2xl font-serif italic tracking-tighter leading-none text-primary group-hover:scale-105 transition-transform">{{ activeCompany.name.split(' ')[0] }}</span>
         <span 
           class="text-[10px] tracking-[0.4em] uppercase mt-1 transition-colors duration-500"
           :class="[(!isScrolled && isHomePage) ? 'text-white/60' : 'text-text-app/60']"
         >
-          Real Estate Canada
+          {{ activeCompany.name.split(' ').slice(1).join(' ') }}
         </span>
       </RouterLink>
 
@@ -65,8 +67,8 @@ onUnmounted(() => {
       <div class="hidden lg:flex items-center space-x-10 text-[11px] uppercase tracking-[0.2em] font-semibold">
         <RouterLink 
           v-for="link in navLinks" 
-          :key="link.path" 
-          :to="link.path" 
+          :key="link.path"
+          :to="withCompanySlug(link.path)"
           class="relative transition-colors py-2 group"
           :class="[(!isScrolled && isHomePage) ? 'text-white/70 hover:text-white' : 'text-text-app/70 hover:text-text-app']"
         >
@@ -94,12 +96,13 @@ onUnmounted(() => {
         <svg v-else xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
       </button>
 
-      <button 
+      <RouterLink
+        :to="withCompanySlug('/contact')"
         class="hidden sm:block px-6 py-2 border rounded-full text-[10px] uppercase tracking-[0.2em] transition-all font-bold"
         :class="[(!isScrolled && isHomePage) ? 'border-white/20 text-white hover:bg-white hover:text-black' : 'border-text-app/20 text-text-app hover:bg-text-app hover:text-bg-app']"
       >
         Contact Agent
-      </button>
+      </RouterLink>
         
         <!-- Mobile Menu Button -->
         <button 
@@ -140,16 +143,16 @@ onUnmounted(() => {
         <div class="flex flex-col items-center space-y-8">
           <RouterLink 
             v-for="link in navLinks" 
-            :key="link.path" 
-            :to="link.path"
+            :key="link.path"
+            :to="withCompanySlug(link.path)"
             @click="isMobileMenuOpen = false"
             class="text-4xl font-serif italic text-text-app hover:text-primary transition-colors"
           >
             {{ link.name }}
           </RouterLink>
-          <button class="mt-8 px-8 py-4 bg-primary text-white rounded-full font-bold uppercase tracking-widest text-sm shadow-2xl">
+          <RouterLink :to="withCompanySlug('/contact')" @click="isMobileMenuOpen = false" class="mt-8 px-8 py-4 bg-primary text-white rounded-full font-bold uppercase tracking-widest text-sm shadow-2xl">
             Request Access
-          </button>
+          </RouterLink>
         </div>
       </div>
     </transition>
