@@ -13,12 +13,22 @@ const router = createRouter({
       path: '/:companySlug',
       beforeEnter: (to) => {
         const companySlug = to.params.companySlug as string | undefined
-        if (!getCompanyBySlug(companySlug)) {
+        const matchedCompany = getCompanyBySlug(companySlug)
+        if (!matchedCompany) {
           return {
             name: 'not-found',
             params: {
               pathMatch: to.path.slice(1).split('/')
             }
+          }
+        }
+
+        if (companySlug && companySlug !== matchedCompany.slug) {
+          return {
+            path: `/${matchedCompany.slug}`,
+            query: to.query,
+            hash: to.hash,
+            replace: true
           }
         }
 

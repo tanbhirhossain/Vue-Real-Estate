@@ -23,7 +23,8 @@ export const defaultCompany = companies[0]
 
 export const getCompanyBySlug = (slug?: string) => {
   if (!slug) return undefined
-  return companies.find((company) => company.slug === slug)
+  const normalizedSlug = slug.toLowerCase()
+  return companies.find((company) => company.slug.toLowerCase() === normalizedSlug)
 }
 
 export const useActiveCompany = () => {
